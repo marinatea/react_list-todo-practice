@@ -1,0 +1,38 @@
+{
+    "sourceFile": "src/App.jsx",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 5,
+            "patches": [
+                {
+                    "date": 1713453758512,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1713453789888,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -0,0 +1,55 @@\n+import { useState } from \"react\";\n+import { Form } from \"./Form\";\n+import list\n+import \"./App.css\";\n+\n+const App = () => {\n+  const [todo, setTodo] = useState([{ title: \"test\", complete: false, id: 1 }]);\n+  \n+  \n+ \n+\n+  const addTodo = (title) => {\n+    const id = Math.max(todo.map(todo => todo.id));\n+    const newTodo = {\n+      title,\n+      complete: false,\n+      id: id + 1,\n+    };\n+\n+    setTodo((prev) => [...prev, newTodo]);\n+  };\n+\n+  const deleteTodo = (id) => {\n+    setTodo((prev) => prev.filter((todoItem) => todoItem.id !== id));\n+  };\n+\n+  const toggleComplete = (id) => {\n+    setTodo((prev) =>\n+      prev.map((todoItem) =>\n+        todoItem.id === id\n+          ? { ...todoItem, complete: !todoItem.complete }\n+          : todoItem\n+      )\n+    );\n+  };\n+\n+  const handleReset = () => {\n+    setTodo([]);\n+  };\n+\n+  return (\n+    <div className=\"Body\">\n+      <div className=\"App\">\n+        <Form add={addTodo} handleReset={handleReset} />\n+        <ListTodo\n+          todo={todo}\n+          deleteTodo={deleteTodo}\n+          toggleComplete={toggleComplete}\n+        />\n+      </div>\n+    </div>\n+  );\n+};\n+\n+export default App;\n"
+                },
+                {
+                    "date": 1713453795384,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,7 +1,7 @@\n import { useState } from \"react\";\n-import { Form } from \"./Form\";\n-import list\n+import form\n+import { ListTodo } from \"./Components/ListTodo\";\n import \"./App.css\";\n \n const App = () => {\n   const [todo, setTodo] = useState([{ title: \"test\", complete: false, id: 1 }]);\n@@ -52,59 +52,4 @@\n   );\n };\n \n export default App;\n-import { useState } from \"react\";\n-import { Form } from \"./Form\";\n-import { ListTodo } from \"./ListTodo\";\n-import \"./App.css\";\n-\n-const App = () => {\n-  const [todo, setTodo] = useState([{ title: \"test\", complete: false, id: 1 }]);\n-  \n-  \n- \n-\n-  const addTodo = (title) => {\n-    const id = Math.max(todo.map(todo => todo.id));\n-    const newTodo = {\n-      title,\n-      complete: false,\n-      id: id + 1,\n-    };\n-\n-    setTodo((prev) => [...prev, newTodo]);\n-  };\n-\n-  const deleteTodo = (id) => {\n-    setTodo((prev) => prev.filter((todoItem) => todoItem.id !== id));\n-  };\n-\n-  const toggleComplete = (id) => {\n-    setTodo((prev) =>\n-      prev.map((todoItem) =>\n-        todoItem.id === id\n-          ? { ...todoItem, complete: !todoItem.complete }\n-          : todoItem\n-      )\n-    );\n-  };\n-\n-  const handleReset = () => {\n-    setTodo([]);\n-  };\n-\n-  return (\n-    <div className=\"Body\">\n-      <div className=\"App\">\n-        <Form add={addTodo} handleReset={handleReset} />\n-        <ListTodo\n-          todo={todo}\n-          deleteTodo={deleteTodo}\n-          toggleComplete={toggleComplete}\n-        />\n-      </div>\n-    </div>\n-  );\n-};\n-\n-export default App;\n"
+                },
+                {
+                    "date": 1713453802181,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,6 +1,6 @@\n import { useState } from \"react\";\n-import form\n+import \n import { ListTodo } from \"./Components/ListTodo\";\n import \"./App.css\";\n \n const App = () => {\n"
+                },
+                {
+                    "date": 1713453811823,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,6 +1,5 @@\n import { useState } from \"react\";\n-\n import { ListTodo } from \"./Components/ListTodo\";\n import \"./App.css\";\n \n const App = () => {\n"
+                },
+                {
+                    "date": 1713453947257,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -0,0 +1,55 @@\n+import { useState } from \"react\";\n+import <Form></Form>\n+import { ListTodo } from \"./Components/ListTodo\";\n+import \"./App.css\";\n+\n+const App = () => {\n+  const [todo, setTodo] = useState([{ title: \"test\", complete: false, id: 1 }]);\n+  \n+  \n+ \n+\n+  const addTodo = (title) => {\n+    const id = Math.max(todo.map(todo => todo.id));\n+    const newTodo = {\n+      title,\n+      complete: false,\n+      id: id + 1,\n+    };\n+\n+    setTodo((prev) => [...prev, newTodo]);\n+  };\n+\n+  const deleteTodo = (id) => {\n+    setTodo((prev) => prev.filter((todoItem) => todoItem.id !== id));\n+  };\n+\n+  const toggleComplete = (id) => {\n+    setTodo((prev) =>\n+      prev.map((todoItem) =>\n+        todoItem.id === id\n+          ? { ...todoItem, complete: !todoItem.complete }\n+          : todoItem\n+      )\n+    );\n+  };\n+\n+  const handleReset = () => {\n+    setTodo([]);\n+  };\n+\n+  return (\n+    <div className=\"Body\">\n+      <div className=\"App\">\n+        <Form add={addTodo} handleReset={handleReset} />\n+        <ListTodo\n+          todo={todo}\n+          deleteTodo={deleteTodo}\n+          toggleComplete={toggleComplete}\n+        />\n+      </div>\n+    </div>\n+  );\n+};\n+\n+export default App;\n"
+                }
+            ],
+            "date": 1713453758512,
+            "name": "Commit-0",
+            "content": "import { useState } from \"react\";\nimport { Form } from \"./Form\";\nimport { ListTodo } from \"./ListTodo\";\nimport \"./App.css\";\n\nconst App = () => {\n  const [todo, setTodo] = useState([{ title: \"test\", complete: false, id: 1 }]);\n  \n  \n \n\n  const addTodo = (title) => {\n    const id = Math.max(todo.map(todo => todo.id));\n    const newTodo = {\n      title,\n      complete: false,\n      id: id + 1,\n    };\n\n    setTodo((prev) => [...prev, newTodo]);\n  };\n\n  const deleteTodo = (id) => {\n    setTodo((prev) => prev.filter((todoItem) => todoItem.id !== id));\n  };\n\n  const toggleComplete = (id) => {\n    setTodo((prev) =>\n      prev.map((todoItem) =>\n        todoItem.id === id\n          ? { ...todoItem, complete: !todoItem.complete }\n          : todoItem\n      )\n    );\n  };\n\n  const handleReset = () => {\n    setTodo([]);\n  };\n\n  return (\n    <div className=\"Body\">\n      <div className=\"App\">\n        <Form add={addTodo} handleReset={handleReset} />\n        <ListTodo\n          todo={todo}\n          deleteTodo={deleteTodo}\n          toggleComplete={toggleComplete}\n        />\n      </div>\n    </div>\n  );\n};\n\nexport default App;\n"
+        }
+    ]
+}

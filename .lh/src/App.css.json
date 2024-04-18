@@ -1,0 +1,18 @@
+{
+    "sourceFile": "src/App.css",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 0,
+            "patches": [
+                {
+                    "date": 1713453864650,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                }
+            ],
+            "date": 1713453864650,
+            "name": "Commit-0",
+            "content": ".Body {\n  display: flex;\n  text-align: center;\n  width: 80%;\n  margin: 0 auto;\n}\n\n.App {\n  text-align: center;\n  font-family: sans-serif;\n  border: 1px solid darkolivegreen;\n  border-radius: 10px;\n  width: 600px;\n  padding: 20px;\n  background-color: beige;\n}\n"
+        }
+    ]
+}

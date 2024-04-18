@@ -1,0 +1,18 @@
+{
+    "sourceFile": "src/Components/ListTodo.jsx",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 0,
+            "patches": [
+                {
+                    "date": 1713453770875,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                }
+            ],
+            "date": 1713453770875,
+            "name": "Commit-0",
+            "content": "export const ListTodo = ({ todo, deleteTodo, toggleComplete }) => {\n  const handleDelete = (id) => {\n    deleteTodo(id);\n  };\n\n  const handleToggle = (id) => {\n    toggleComplete(id);\n  };\n\n  return (\n    <div>\n      <ul>\n        {todo.map((element) => (\n          <li key={element.id}>\n            {element.title}\n            <span\n              style={{ color: element.complete ? \"darkolivegreen\" : \"darkred\" }}\n            >\n              {\" \"}\n              {element.complete ? \"is-completed\" : \"is-not-completed\"}\n            </span>{\" \"}\n            <button onClick={() => handleDelete(element.id)}>Delete</button>{\" \"}\n            <button onClick={() => handleToggle(element.id)}>\n              {!element.complete ? \"Completed\" : \"Not - completed\"}\n            </button>\n          </li>\n        ))}\n      </ul>\n    </div>\n  );\n};\n"
+        }
+    ]
+}

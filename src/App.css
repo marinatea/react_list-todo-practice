@@ -1,0 +1,16 @@
+.Body {
+  display: flex;
+  text-align: center;
+  width: 80%;
+  margin: 0 auto;
+}
+
+.App {
+  text-align: center;
+  font-family: sans-serif;
+  border: 1px solid darkolivegreen;
+  border-radius: 10px;
+  width: 600px;
+  padding: 20px;
+  background-color: beige;
+}
