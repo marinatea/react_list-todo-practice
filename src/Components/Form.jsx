@@ -1,7 +1,7 @@
 import { useState } from "react";
 import React from "react";
 
-export const Form = ({ add, handleReset }) => {
+export const Form = ({ add }) => {
   const [title, setTitle] = useState("");
 
   const handleTitle = ({ target: { value } }) => {
@@ -20,8 +20,6 @@ export const Form = ({ add, handleReset }) => {
       <button type="submit" onClick={handleSubmit}>
         Add todo
       </button>
-      {' '}
-      <button onClick={handleReset}>Reset</button>
     </form>
   );
 };

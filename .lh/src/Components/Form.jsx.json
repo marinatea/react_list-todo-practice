@@ -3,7 +3,7 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 1,
+            "activePatchIndex": 2,
             "patches": [
                 {
                     "date": 1713453764379,
@@ -12,6 +12,10 @@
                 {
                     "date": 1713454207441,
                     "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,55 +1,27 @@\n import { useState } from \"react\";\n-import { Form } from \"./Form\";\n-import { ListTodo } from \"./ListTodo\";\n-import \"./App.css\";\n+import React from \"react\";\n \n-const App = () => {\n-  const [todo, setTodo] = useState([{ title: \"test\", complete: false, id: 1 }]);\n-  \n-  \n- \n+export const Form = ({ add, handleReset }) => {\n+  const [title, setTitle] = useState(\"\");\n \n-  const addTodo = (title) => {\n-    const id = Math.max(todo.map(todo => todo.id));\n-    const newTodo = {\n-      title,\n-      complete: false,\n-      id: id + 1,\n-    };\n-\n-    setTodo((prev) => [...prev, newTodo]);\n+  const handleTitle = ({ target: { value } }) => {\n+    setTitle(value);\n   };\n \n-  const deleteTodo = (id) => {\n-    setTodo((prev) => prev.filter((todoItem) => todoItem.id !== id));\n+  const handleSubmit = (event) => {\n+    event.preventDefault();\n+    add(title);\n+    setTitle(\"\");\n   };\n \n-  const toggleComplete = (id) => {\n-    setTodo((prev) =>\n-      prev.map((todoItem) =>\n-        todoItem.id === id\n-          ? { ...todoItem, complete: !todoItem.complete }\n-          : todoItem\n-      )\n-    );\n-  };\n-\n-  const handleReset = () => {\n-    setTodo([]);\n-  };\n-\n   return (\n-    <div className=\"Body\">\n-      <div className=\"App\">\n-        <Form add={addTodo} handleReset={handleReset} />\n-        <ListTodo\n-          todo={todo}\n-          deleteTodo={deleteTodo}\n-          toggleComplete={toggleComplete}\n-        />\n-      </div>\n-    </div>\n+    <form onSubmit={handleSubmit}>\n+      <input value={title} type=\"text\" onChange={handleTitle} />{\" \"}\n+      <button type=\"submit\" onClick={handleSubmit}>\n+        Add todo\n+      </button>\n+      {' '}\n+      <button onClick={handleReset}>Reset</button>\n+    </form>\n   );\n };\n-\n-export default App;\n"
+                },
+                {
+                    "date": 1713528560279,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,8 +1,8 @@\n import { useState } from \"react\";\n import React from \"react\";\n \n-export const Form = ({ add, handleReset }) => {\n+export const Form = ({ add }) => {\n   const [title, setTitle] = useState(\"\");\n \n   const handleTitle = ({ target: { value } }) => {\n     setTitle(value);\n@@ -19,9 +19,7 @@\n       <input value={title} type=\"text\" onChange={handleTitle} />{\" \"}\n       <button type=\"submit\" onClick={handleSubmit}>\n         Add todo\n       </button>\n-      {' '}\n-      <button onClick={handleReset}>Reset</button>\n     </form>\n   );\n };\n"
                 }
             ],
             "date": 1713453764379,

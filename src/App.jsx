@@ -5,12 +5,10 @@ import "./App.css";
 
 const App = () => {
   const [todo, setTodo] = useState([{ title: "test", complete: false, id: 1 }]);
-  
-  
- 
 
   const addTodo = (title) => {
-    const id = Math.max(...todo.map((todo) => todo.id));    const newTodo = {
+    const id = todo.length > 0 ? Math.max(...todo.map((todo) => todo.id)) : 0;
+    const newTodo = {
       title,
       complete: false,
       id: id + 1,
@@ -40,7 +38,8 @@ const App = () => {
   return (
     <div className="Body">
       <div className="App">
-        <Form add={addTodo} handleReset={handleReset} />
+        <Form add={addTodo} />
+        <button onClick={handleReset}>Reset</button>
         <ListTodo
           todo={todo}
           deleteTodo={deleteTodo}
